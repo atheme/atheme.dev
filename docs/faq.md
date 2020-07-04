@@ -1,0 +1,49 @@
+---
+id: faq
+title: Frequently Asked Questions
+sidebar_label: FAQ
+---
+
+## 1. Will you implement SQL support?
+
+No, there are many impracticalities with SQL support, such as:
+
+ - the inability to properly validate data being inserted back
+   into the database
+
+ - cache invalidation (caching would be needed to ensure
+   performance)
+
+The only gain would be easier web integration, but you can do
+that with XMLRPC and authentication modules anyway.
+
+Plus, we strongly believe you should know how your services
+are working, so why would we do all the work for you?
+
+## 2. Which crypto module should I use?
+
+`crypto/argon2d` or `crypto/pbkdf2v2` (see [SASL-SCRAM-SHA](/docs/sasl/sasl-scram-sha) to decide
+which one).
+
+## 3. There is an Atheme "0day exploit"?!&%&%@!!
+
+Report it to us.  Do not twitter about it, that is generally not
+helpful.  People who publicize 0days before they can be fixed are
+also generally known as "assholes."
+
+## 4. I get a compile error about some .po file thing.
+
+`./configure --disable-nls` or install gettext and rerun `./configure`.
+
+## 5. Atheme exits complaining that it is 'tainted'.
+
+You have configured your network in a way that is not supported
+correctly by Atheme at this time.  In order to use this configuration,
+you must acknowledge that you are using an unsupported configuration.
+
+To do this, you enable the allow_taint directive in the config, but
+do note that if you come asking us for help with your installation,
+we will not provide you with support.
+
+Also note that we do not provide support for enabling allow_taint.
+

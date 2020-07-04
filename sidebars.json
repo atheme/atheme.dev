@@ -1,0 +1,67 @@
+{
+  "docs": {
+    "Getting Started": [
+      "install",
+      {
+        "type": "category",
+        "label": "Configuration",
+        "items": [
+          "config/intro",
+          "config/database",
+          "config/serverinfo",
+          "config/uplink",
+          "config/general",
+          "config/crypto",
+          {
+            "type": "category",
+            "label": "Services",
+            "items": [
+              "config/nickserv",
+              "config/userserv",
+              "config/chanserv",
+              "config/chanfix",
+              "config/groupserv",
+              "config/global",
+              "config/infoserv",
+              "config/operserv",
+              "config/alis",
+              "config/saslserv",
+              "config/memoserv",
+              "config/gameserv",
+              "config/botserv",
+              "config/hostserv",
+              "config/proxyscan",
+              "config/helpserv",
+              "config/rpgserv",
+              "config/statserv"
+            ]
+          }
+        ]
+      }
+    ],
+    "Using Atheme": [
+      "help/index",
+      "help/alis",
+      "help/botserv",
+      "help/chanserv",
+      "help/gameserv",
+      "help/groupserv",
+      "help/global",
+      "help/helpserv",
+      "help/chanfix"
+    ],
+    "Guides": [
+      {
+        "type": "category",
+        "label": "SASL",
+        "items": [
+          "sasl/auth",
+          "sasl/sasl-scram-sha"
+        ]
+      }
+    ],
+    "General": [
+      "faq"
+    ]
+  }
+}
