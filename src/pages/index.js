@@ -8,32 +8,66 @@ import styles from './styles.module.css';
 
 const features = [
   {
-    title: <>Easy to Use</>,
-    imageUrl: 'img/undraw_docusaurus_mountain.svg',
+    title: <>Ubiquity</>,
+    imageUrl: 'img/undraw_connected_world_wuay.svg',
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Not only are more and more networks using Atheme every day, 
+        but some of IRC's most well-known networks are already using Atheme. 
+        Networks such as <a href="https://freenode.net">freenode</a>, <a href="http://www.esper.net/">EsperNet</a>, 
+         and <a href="http://darkmyst.org/">DarkMyst</a> are all relying on Atheme IRC services.
       </>
     ),
   },
   {
-    title: <>Focus on What Matters</>,
-    imageUrl: 'img/undraw_docusaurus_tree.svg',
+    title: <>Customisable</>,
+    imageUrl: 'img/undraw_forming_ideas_0pav.svg',
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        Atheme comes prebundled with over 250 modules and 
+        you can find over 50 additional modules in our contributed modules repository on GitHub.
       </>
     ),
   },
   {
-    title: <>Powered by React</>,
-    imageUrl: 'img/undraw_docusaurus_react.svg',
+    title: <>Fast + Efficient</>,
+    imageUrl: 'img/undraw_Outer_space_drqu.svg',
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        The Internet is faster than ever before. Computers are exponentially speedier 
+        than any time in the past. Shouldn't your IRC services be fast too? Atheme IRC 
+        services not only are lightning fast, but are also the most scalable modern IRC services package available.
+      </>
+    ),
+  },
+  {
+    title: <>Compatibility</>,
+    imageUrl: 'img/undraw_server_q2pb.svg',
+    description: (
+      <>
+        Atheme supports linking to over twenty different IRC daemons. 
+        For a full list of supported IRCds, view our compatibility report.
+      </>
+    ),
+  },
+  {
+    title: <>Extensible</>,
+    imageUrl: 'img/undraw_programmer_imem.svg',
+    description: (
+      <>
+        Even something as featureful as Atheme might not have everything your network needs. 
+        For those cases, Atheme offers both an extremely clean C API and a powerful, 
+        well-structured Perl interface. Extending services has never been easier!
+      </>
+    ),
+  },
+  {
+    title: <>Feature-Packed</>,
+    imageUrl: 'img/undraw_collecting_fjjl.svg',
+    description: (
+      <>
+        Atheme has all the features you've come to expect from modern IRC services, 
+        such as BotServ and HostServ, as well as innovative new features, such as GroupServ, CHANFIX and InfoServ.
       </>
     ),
   },
@@ -71,7 +105,7 @@ function Home() {
                 'button button--outline button--secondary button--lg',
                 styles.getStarted,
               )}
-              to={useBaseUrl('docs/')}>
+              to={useBaseUrl('docs/install')}>
               Get Started
             </Link>
           </div>

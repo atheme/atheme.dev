@@ -65,6 +65,39 @@ Atheme can set up special target mapping entities which match multiple users in 
 | `modules/exttarget/chanacs` | `$chanacs` match type |
 | `modules/exttarget/server` | `$server` match type |
 
+## LDAP
+
+Services is able to validate users through LDAP. To do this, load the `modules/auth/ldap` module. This module requires [OpenLDAP](https://www.openldap.org/) client libraries. It uses them in a synchronous manner, which means that an unresponsive LDAP server can freeze services.
+
+### LDAP Block
+
+The `ldap{}` block contains settings specific to LDAP authentication.
+
+Example:
+
+```
+ldap {
+    url = "ldap://127.0.0.1";
+    dnformat = "cn=%s,dc=test,dc=com";
+};
+```
+
+#### url
+
+The LDAP URL of the server to use.
+
+Example: `url = "ldap://127.0.0.1";`
+
+#### dnformat
+
+The format string to convert an account name to an LDAP DN.
+
+This must contain exactly one `%s` which will be replaced by the account name.
+
+Services will attempt a simple bind with this DN and the given password; the password is considered correct if this is successful.
+
+Example: `dnformat = "cn=%s,dc=test,dc=com";`
+
 ## Other Modules
 
 If you have any custom modules built for Atheme, you can include them; for example, if you compiled using `--enable-contrib` and wanted to load a module from the [atheme-contrib-modules](https://github.com/atheme/atheme-contrib-modules) repo. 
