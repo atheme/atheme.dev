@@ -43,31 +43,7 @@ chanserv {
 
 ### Services Bot Options
 
-These options configure how ChanServ is shown when connected to the network in terms of `nick!user@host :realname` settings.
-
-#### nick
-
-The nickname you want ChanServ to have. It is generally recommended to leave nicknames on their defaults (NickServ/ChanServ/etc.) as many users may expect services to have these nicknames, or may have scripts hardcoded to expect those nicknames, but it is permitted to rename your services bots however you prefer.
-
-Example: `nick = "ChanServ";`
-
-#### user
-
-The username you want ChanServ to have, this can be freeform as long as it fits within the constraints for an IRC user field.
-
-Example: `user = "ChanServ;"`
-
-#### host
-
-The hostname you want ChanServ to have. This may also be freeform, as long as it fits within IRC constraints for a hostname, but it is generally recommended for this to be consistent across services bots for ease of visibility.
-
-Example: `host = "services.int";`
-
-#### real
-
-The realname (GECOS) information you want ChanServ to have. This may also be freeform.
-
-Example: `real = "Channel Services";`
+ChanServ supports all [standard services bot options](/docs/config/services).
 
 ### reggroup
 
@@ -76,25 +52,6 @@ The group that will receive memos about channel registration requests when `chan
 This may be left unset if your services setup does not use `chanserv/moderate` or does not use a group for this.
 
 Example: `reggroup = "!Services-Team";`
-
-### aliases
-
-This configuration group defines command aliases for ChanServ. An alias allows the service bot to accept a different name for a command, for example if you wanted `/msg ChanServ MUTE ...` to function the same as `/msg ChanServ QUIET ...`.
-
-This field takes a group of `alias = command` options.
-
-Example:
-
-```
-aliases {
-    "MUTE" = "QUIET";
-};
-```
-
-### access
-
-This block allows you to modify the access level required to run commands. 
-> TBD
 
 ### maxchans
 

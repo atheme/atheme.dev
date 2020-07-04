@@ -24,31 +24,7 @@ infoserv {
 
 ### Services Bot Options
 
-These options configure how InfoServ is shown when connected to the network in terms of `nick!user@host :realname` settings.
-
-#### nick
-
-The nickname you want InfoServ to have.
-
-Example: `nick = "InfoServ";`
-
-#### user
-
-The username you want InfoServ to have, this can be freeform as long as it fits within the constraints for an IRC user field.
-
-Example: `user = "InfoServ;"`
-
-#### host
-
-The hostname you want InfoServ to have. This may also be freeform, as long as it fits within IRC constraints for a hostname, but it is generally recommended for this to be consistent across services bots for ease of visibility.
-
-Example: `host = "services.int";`
-
-#### real
-
-The realname (GECOS) information you want InfoServ to have. This may also be freeform.
-
-Example: `real = "Information Service";`
+InfoServ supports all [standard services bot options](/docs/config/services).
 
 ### logoninfo_count
 

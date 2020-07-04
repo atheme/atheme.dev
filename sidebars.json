@@ -16,6 +16,7 @@
             "type": "category",
             "label": "Services",
             "items": [
+              "config/services",
               "config/nickserv",
               "config/userserv",
               "config/chanserv",

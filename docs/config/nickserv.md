@@ -34,6 +34,10 @@ nickserv {
 };
 ```
 
+### Services Bot Options
+
+NickServ supports all [standard services bot options](/docs/config/services).
+
 ### spam
 
 The `spam` value defines if NickServ should tell new users about the option to use services on your network. If enabled, a new user will receive the following message from NickServ:
@@ -51,54 +55,6 @@ Enabling this value will disable nickname ownership on your network. This will c
 If using `no_nick_ownership`, it is suggested that the nickname for this service be set to UserServ, and the `nickserv/login` module be loaded instead of `nickserv/identify`. 
 
 This value may be either enabled (`no_nick_ownership;`) or disabled by commenting it out (`#no_nick_ownership;`) or removing it.
-
-### Services Bot Options
-
-These options configure how NickServ is shown when connected to the network in terms of `nick!user@host :realname` settings.
-
-#### nick
-
-The nickname you want NickServ to have. It is generally recommended to leave nicknames on their defaults (NickServ/ChanServ/etc.) as many users may expect services to have these nicknames, or may have scripts hardcoded to expect those nicknames, but it is permitted to rename your services bots however you prefer (e.g. NickServ is commonly renamed to UserServ if [no_nick_ownership](#no_nick_ownership) is enabled).
-
-Example: `nick = "NickServ";`
-
-#### user
-
-The username you want NickServ to have, this can be freeform as long as it fits within the constraints for an IRC user field.
-
-Example: `user = "NickServ;"`
-
-#### host
-
-The hostname you want NickServ to have. This may also be freeform, as long as it fits within IRC constraints for a hostname, but it is generally recommended for this to be consistent across services bots for ease of visibility.
-
-Example: `host = "services.int";`
-
-#### real
-
-The realname (GECOS) information you want NickServ to have. This may also be freeform.
-
-Example: `real = "Nickname Services";`
-
-### aliases
-
-This configuration group defines command aliases for NickServ. An alias allows the service bot to accept a different name for a command, for example if you wanted `/msg NickServ ID ...` to function the same as `/msg NickServ IDENTIFY ...`.
-
-This field takes a group of `alias = command` options.
-
-Example:
-
-```
-aliases {
-    "ID" = "IDENTIFY";
-    "MYACCESS" = "LISTCHANS";
-};
-```
-
-### access
-
-This block allows you to modify the access level required to run commands. 
-> TBD
 
 ### maxnicks
 
