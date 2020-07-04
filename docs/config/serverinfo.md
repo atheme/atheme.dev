@@ -7,7 +7,7 @@ sidebar_label: Server Info
 ## Server Info
 
 The `serverinfo{}` block defines how Atheme Services will appear on your IRC network.
-This configuration segment also will define how your Athem instance will handle specific
+This configuration segment also will define how your Atheme instance will handle specific
 components of user registration. 
 
 All configuration options will be within the `serverinfo{}` block.

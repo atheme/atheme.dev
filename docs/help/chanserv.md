@@ -1113,28 +1113,15 @@ See Also: [`REJECT`](#reject), [`ACTIVATE`](#activate)
 | H - Autohalfop | | |
 | q - Owner | [owner](#owner) | Only available on networks which support the owner channel mode. |
 | a - Protected | [TBD](#TBD) | Only available on networks which support the protected user channel mode. |
+| s - Set | TBD | |
+| i - Invite | [invite](#invite) | |
+| r - Remove | [akick](#akick) | |
+| R - Recover | | |
+| f - Flags | | |
+| t - Topic | | |
+| A - ACL View | | |
+| S - Successor | | |
+| F - Founder | | |
+| b - AKICK | | |
+| e - Exempt | | |
 
-
-#### s - SET
-
-#### i - INVITE
-
-#### r - REMOVE
-
-This flag is required to use: [`AKICK`](#akick)
-
-#### R - RECOVER
-
-#### f - FLAGS
-
-#### t - TOPIC
-
-#### A - ACLVIEW
-
-#### S - SUCCESSOR
-
-#### F - FOUNDER
-
-#### b - AKICK
-
-#### e - EXEMPT

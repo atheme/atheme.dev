@@ -1,7 +1,7 @@
 module.exports = {
   title: 'Atheme Services',
   tagline: 'Atheme is a feature-packed, extremely customisable IRC services daemon that is secure, stable and scalable.',
-  url: 'https://your-docusaurus-test-site.com',
+  url: 'https://beta.atheme.dev',
   baseUrl: '/',
   favicon: 'img/favicon.ico',
   organizationName: 'atheme', // Usually your GitHub org/user name.
@@ -11,7 +11,7 @@ module.exports = {
       title: 'Atheme',
       links: [
         {
-          to: 'docs/',
+          to: 'docs/install',
           activeBasePath: 'docs',
           label: 'Docs',
           position: 'left',
@@ -31,12 +31,12 @@ module.exports = {
           title: 'Docs',
           items: [
             {
-              label: 'Style Guide',
-              to: 'docs/',
+              label: 'Getting Started',
+              to: 'docs/install',
             },
             {
-              label: 'Second Doc',
-              to: 'docs/doc2/',
+              label: 'Using Atheme',
+              to: 'docs/help/index',
             },
           ],
         },

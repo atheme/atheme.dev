@@ -41,9 +41,10 @@
     ],
     "Using Atheme": [
       "help/index",
+      "help/nickserv",
+      "help/chanserv",
       "help/alis",
       "help/botserv",
-      "help/chanserv",
       "help/gameserv",
       "help/groupserv",
       "help/global",

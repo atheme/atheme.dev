@@ -8,6 +8,32 @@ NickServ offers two possible configurations, based on your preference for networ
 
 ## NickServ Block
 
+The `nickserv{}` block contains settings for the NickServ service bot and related nick/account management options. 
+
+A fully configured `nickserv{}` block may look like:
+
+```
+nickserv {
+    spam;
+    nick = "NickServ";
+    user = "NickServ";
+    host = "misconfigured.network";
+    real = "Nickname Services";
+    aliases {
+        "ID" = "IDENTIFY";
+        "MYACCESS" = "LISTCHANS";
+    };
+    maxnicks = 5;
+    expire = 30;
+    enforce_delay = 30;
+    enforce_prefix = "Luser";
+    waitreg_time = 60;
+    cracklib_dict = "/var/cache/cracklib/cracklib_dict";
+    #pwquality_warn_only;
+    shorthelp = "REGISTER IDENTIFY LOGOUT GROUP DROP";
+};
+```
+
 ### spam
 
 The `spam` value defines if NickServ should tell new users about the option to use services on your network. If enabled, a new user will receive the following message from NickServ:
@@ -169,3 +195,82 @@ emailexempts {
     "services@example.int";
 }
 ```
+
+### shorthelp
+
+A list of commands that are displayed with their full description in the output of `/msg NickServ HELP`. Commands not in this list will be listed, but not with their descriptions. All commands with descriptions are still listed in `/msg NickServ HELP COMMANDS` regardless of the value set here.
+
+If not set, this value defaults to "[ACCESS](/docs/help/nickserv#access) [CERT](/docs/help/nickserv#cert) [DROP](/docs/help/nickserv#drop) [GHOST](/docs/help/nickserv#ghost) [GROUP](/docs/help/nickserv#group) [IDENTIFY](/docs/help/nickserv#identify) [INFO](/docs/help/nickserv#info) [LISTCHANS](/docs/help/nickserv#listchans) [LISTGROUPS](/docs/help/nickserv#listgroups) [LISTLOGINS](/docs/help/nickserv#listlogins) [LISTOWNMAIL](/docs/help/nickserv#listownmail) [LOGOUT](/docs/help/nickserv#logout) [REGAIN](/docs/help/nickserv#regain) [REGISTER](/docs/help/nickserv#register) [RELEASE](/docs/help/nickserv#release) [SENDPASS](/docs/help/nickserv#sendpass) [SET](/docs/help/nickserv#set) [UNGROUP](/docs/help/nickserv#ungroup)"
+
+If set to an empty string (`shorthelp = "";`), listing command descriptions in `/msg NickServ HELP` will be disabled.
+
+A command in this list will only be printed if the corresponding module is loaded and the user has permission to use it. 
+
+Examples: 
+
+- Custom list: `shorthelp = "REGISTER IDENTIFY LOGOUT";`
+- No list: `shorthelp = "";`
+- Default: `#shorthelp = "";`
+
+## Modules
+
+By loading or choosing not to load specific modules, you can customize what features of NickServ are available on your network. You can even choose to disable NickServ entirely by not loading any of the `modules/nickserv/*` family of modules &mdash; please note that an authentication service (either NickServ or UserServ) is required for proper services functionality.
+
+| Module | Features | Notes |
+| ------ | -------- | ----- |
+| `modules/nickserv/main` | Core components | |
+| `modules/nickserv/access` | [Nickname access lists](/docs/help/nickserv#access) | |
+| `modules/nickserv/badmail` | Bad email address blocking | |
+| `modules/nickserv/cert` | [CertFP fingerprint management](/docs/help/nickserv#cert) | |
+| `modules/nickserv/drop` | [DROP command](/docs/help/nickserv#drop) | |
+| `modules/nickserv/enforce` | [Nickname enforcement](/docs/config/nickserv#enforce-settings) | Also enables [enforcement commands](/docs/help/nickserv#set-enforce) |
+| `modules/nickserv/ghost` | [GHOST command](/docs/help/nickserv#ghost) | |
+| `modules/nickserv/group` | [GROUP](/docs/help/nickserv#group) and [UNGROUP](/docs/help/nickserv#ungroup) commands | |
+| `modules/nickserv/help` | [HELP command](/docs/help/nickserv#help) | |
+| `modules/nickserv/hold` | Nickname expiry override ([HOLD command](/docs/help/nickserv#hold)) | |
+| `modules/nickserv/identify` | [IDENTIFY command](/docs/help/nickserv#identify) | Either this module or `modules/nickserv/login` must be loaded for users to identify to services. Select this module if allowing nickname ownership. |
+| `modules/nickserv/info` | [INFO command](/docs/help/nickserv#info) | |
+| `modules/nickserv/info_lastquit` | Shows last quit message in `INFO` | |
+| `modules/nickserv/list` | [LIST command](/docs/help/nickserv#list) | |
+| `modules/nickserv/listlogins` | [LISTLOGINS command](/docs/help/nickserv#listlogins) | |
+| `modules/nickserv/listmail` | [LISTMAIL command](/docs/help/nickserv#listmail) | |
+| `modules/nickserv/listownmail` | [LISTOWNMAIL command](/docs/help/nickserv#listownmail) | |
+| `modules/nickserv/login` | [LOGIN command](/docs/help/nickserv#login) | Either this module or `modules/nickserv/identify` must be loaded for users to identify to services. Select this module if `no_nick_ownership` is enabled. |
+| `modules/nickserv/logout` | [LOGOUT command](/docs/help/nickserv#logout) | |
+| `modules/nickserv/mark` | [MARK command](/docs/help/nickserv#mark) | |
+| `/modules/nickserv/pwquality` | Password quality validation | See [password quality options](#password-quality-options) for settings for this module. |
+| `modules/nickserv/freeze` | [FREEZE command](/docs/help/nickserv#freeze) | |
+| `modules/nickserv/listchans` | [LISTCHANS command](/docs/help/nickserv#listchans) | |
+| `modules/nickserv/register` | [REGISTER command](/docs/help/nickserv#register) | This module is required for users to register an account with services. |
+| `modules/nickserv/regnolimit` | Bypass registration limits ([REGNOLIMIT command](/docs/help/nickserv#regnolimit)) | |
+| `modules/nickserv/resetpass` | Password reset ([RESETPASS command](/docs/help/nickserv#resetpass)) | |
+| `modules/nickserv/restrict` | [RESTRICT command](/docs/help/nickserv#restrict) | |
+| `modules/nickserv/return` | Password return ([RETURN command](/docs/help/nickserv#return)) | |
+| `modules/nickserv/sendpass` | Password retrieval ([SENDPASS command](/docs/help/nickserv#sendpass)) | Requires a functional MTA to work properly. |
+| `modules/nickserv/sendpass_user` | Password retrieval allowed to normal users ([SENDPASS command](/docs/help/nickserv#sendpass)) | Requires a functional MTA to work properly. |
+| `modules/nickserv/set_accountname` | Allow a user to change their primary nickname ([SET ACCOUNTNAME command](/docs/help/nickserv#set-accountname)) | |
+| `modules/nickserv/set_email` | [SET EMAIL command](/docs/help/nickserv#set-email) | |
+| `modules/nickserv/set_emailmemos` | [SET EMAILMEMOS command](/docs/help/nickserv#set-emailmemos) | |
+| `modules/nickserv/set_enforcetime` | [SET ENFORCETIME command](/docs/help/nickserv#set-enforcetime) | Only usable if `ENFORCE` is enabled. |
+| `modules/nickserv/set_hidemail` | [SET HIDEMAIL command](/docs/help/nickserv#set-hidemail) | |
+| `modules/nickserv/set_language` | [SET LANGUAGE command](/docs/help/nickserv#set-language) | |
+| `modules/nickserv/set_nevergroup` | [SET NEVERGROUP command](/docs/help/nickserv#set-nevergroup) | Only usable if GroupServ is enabled. |
+| `modules/nickserv/set_neverop` | [SET NEVEROP command](/docs/help/nickserv#set-neverop) | |
+| `modules/nickserv/set_nogreet` | [SET NOGREET command](/docs/help/nickserv#set-nogreet) | |
+| `modules/nickserv/set_nomemo` | [SET NOMEMO command](/docs/help/nickserv#set-nomemo) | |
+| `modules/nickserv/set_noop` | [SET NOOP command](/docs/help/nickserv#set-noop) | |
+| `modules/nickserv/set_nopassword` | [SET NOPASSWORD command](/docs/help/nickserv#set-nopassword) | |
+| `modules/nickserv/set_password` | [SET PASSWORD command](/docs/help/nickserv#set-password) | |
+| `modules/nickserv/set_privmsg` | PRIVMSG the user instead of NOTICE ([SET PRIVMSG command](/docs/help/nickserv#set-privmsg)) | |
+| `modules/nickserv/set_private` | Account info hiding ([SET PRIVATE command](/docs/help/nickserv#set-private)) | |
+| `modules/nickserv/set_property` | [SET PROPERTY command](/docs/help/nickserv#set-property) | |
+| `modules/nickserv/set_pubkey` | [SET PUBKEY command](/docs/help/nickserv#set-pubkey) | |
+| `modules/nickserv/set_quietchg` | [SET QUIETCHG command](/docs/help/nickserv#set-quietchg) | |
+| `modules/nickserv/setpass` | Password retrieval uses code ([SETPASS command](/docs/help/nickserv#setpass)) | |
+| `modules/nickserv/status` | [STATUS command](/docs/help/nickserv#status) | |
+| `modules/nickserv/taxonomy` | Nickname metadata viewer ([TAXONOMY command](/docs/help/nickserv#taxonomy)) | |
+| `modules/nickserv/vacation` | [VACATION command](/docs/help/nickserv#vacation) | |
+| `modules/nickserv/verify` | [VERIFY command](/docs/help/nickserv#verify) | |
+| `modules/nickserv/vhost` | [VHOST command](/docs/help/nickserv#vhost) | |
+| `modules/nickserv/waitreg` | [Delay services account creation](#waitreg_time) | |
+
