@@ -1,4 +1,5 @@
 module.exports = {
+  onBrokenLinks: 'log',
   title: 'Atheme Services',
   tagline: 'Atheme is a feature-packed, extremely customisable IRC services daemon that is secure, stable and scalable.',
   url: 'https://beta.atheme.dev',
@@ -9,7 +10,7 @@ module.exports = {
   themeConfig: {
     navbar: {
       title: 'Atheme',
-      links: [
+      items: [
         {
           to: 'docs/install',
           activeBasePath: 'docs',
@@ -44,8 +45,8 @@ module.exports = {
           title: 'Community',
           items: [
             {
-              label: 'IRC - freenode/#atheme',
-              href: 'https://webchat.freenode.net/#atheme',
+              label: 'IRC - libera.chat/#atheme',
+              href: 'ircs://irc.libera.chat/#atheme',
             },
           ],
         },
@@ -72,7 +73,6 @@ module.exports = {
       {
         docs: {
           // It is recommended to set document id as docs home page (`docs/` path).
-          homePageId: 'doc1',
           sidebarPath: require.resolve('./sidebars.json'),
           // Please change this to your repo.
           editUrl:
