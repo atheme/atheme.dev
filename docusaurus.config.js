@@ -2,7 +2,7 @@ module.exports = {
   onBrokenLinks: 'log',
   title: 'Atheme Services',
   tagline: 'Atheme is a feature-packed, extremely customisable IRC services daemon that is secure, stable and scalable.',
-  url: 'https://beta.atheme.dev',
+  url: 'https://atheme.dev',
   baseUrl: '/',
   favicon: 'img/favicon.ico',
   organizationName: 'atheme', // Usually your GitHub org/user name.
