@@ -4,6 +4,8 @@ title: Installing Atheme
 sidebar_label: Install
 ---
 
+The first step to Athemeing your IRC network is to build and install Atheme. If you have not already installed Atheme via your method of choice, follow these instructions to build it.
+
 ## Obtaining Atheme
 
 You can either `git clone https://github.com/atheme/atheme.git` or download the most recent tarball from [our website](https://atheme.org). Do not use the _Download_ buttons on GitHub, as GitHub's automatically generated tarballs do not contain all needed submodules, etc. for Atheme to correctly build.
