@@ -14,7 +14,7 @@ const features = [
       <>
         Not only are more and more networks using Atheme every day, 
         but some of IRC's most well-known networks are already using Atheme. 
-        Networks such as <a href="https://freenode.net">freenode</a>, <a href="http://www.esper.net/">EsperNet</a>, 
+        Networks such as <a href="https://libera.chat">Libera Chat</a>, <a href="http://www.esper.net/">EsperNet</a>, 
          and <a href="http://darkmyst.org/">DarkMyst</a> are all relying on Atheme IRC services.
       </>
     ),
