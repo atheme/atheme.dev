@@ -11,7 +11,12 @@ instance.
 
 ### permissive_mode
 
-I don't really know what this does.
+If you load the `security/cmdperm` module, enabling this option will tell that module
+to not actually deny any command execution, but log the fact that it would have been
+denied and due to the lack of which missing privilege the user had.
+
+This is intended to help you write a `cmdperm` policy. It is not recommended to enable
+this for production networks as it allows your users to bypass your `cmdperm` policy.
 
 ### helpchan
 
